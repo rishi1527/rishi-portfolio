@@ -17,7 +17,7 @@ function Hero() {
             Available for opportunities
           </div>
 
-          <p className="hero-small">HELLO, I'M RISHI THE FULL STAC DEVELOPER</p>
+          <p className="hero-small">HELLO, I'M RISHI THE FULL STACK DEVELOPER</p>
 
           <h1>
             I BUILD
