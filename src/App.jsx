@@ -6,6 +6,7 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import CustomCursor from "./components/CustomCursor";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -34,7 +35,8 @@ function App() {
         <Skills />
         <Projects />
         <Contact />
-        <Footer/>
+        <Footer />
+        <CustomCursor />
       </main>
     </div>
   );

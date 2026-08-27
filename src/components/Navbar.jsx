@@ -21,7 +21,7 @@ function Navbar({ darkMode, setDarkMode }) {
     >
       <div className="nav-container">
         <a href="#home" className="logo" onClick={() => setMenuOpen(false)}>
-          RISHI<span>°</span>
+          Rishi<span>°</span>
         </a>
 
         <div className="desktop-links">
