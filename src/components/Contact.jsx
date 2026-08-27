@@ -16,7 +16,14 @@ function Contact() {
     setSuccess(false);
     setError(false);
 
+    // Form se name aur email lena
+    const formData = new FormData(form.current);
+
+    const userName = formData.get("user_name");
+    const userEmail = formData.get("user_email");
+
     try {
+      // EmailJS
       await emailjs.sendForm(
         "service_r1z7mpi",
         "template_ua1nirq",
@@ -26,25 +33,33 @@ function Contact() {
         },
       );
 
-      // Success message show
+      // Sirf NAME aur EMAIL Local Storage me save honge
+      localStorage.setItem(
+        "contactUser",
+        JSON.stringify({
+          name: userName,
+          email: userEmail,
+        }),
+      );
+
       setSuccess(true);
 
-      // Clear form
+      // Form clear
       form.current.reset();
 
-      // Success message hide after 3 seconds
+      // Success message 4 seconds baad hide
       setTimeout(() => {
         setSuccess(false);
-      }, 3000);
+      }, 4000);
     } catch (err) {
       console.error("EmailJS Error:", err);
 
       setError(true);
 
-      // Error message hide after 3 seconds
+      // Error message 4 seconds baad hide
       setTimeout(() => {
         setError(false);
-      }, 3000);
+      }, 4000);
     } finally {
       setSending(false);
     }
@@ -147,18 +162,16 @@ function Contact() {
               <span>↗</span>
             </button>
 
-            {/* SUCCESS MESSAGE */}
+            {/* SUCCESS */}
             {success && (
-              <div className="success-message">
-                ✓ Message sent successfully!
-              </div>
+              <p className="success-message">✓ Message sent successfully!</p>
             )}
 
-            {/* ERROR MESSAGE */}
+            {/* ERROR */}
             {error && (
-              <div className="error-message">
+              <p className="error-message">
                 ✕ Message failed. Please try again.
-              </div>
+              </p>
             )}
           </motion.form>
         </div>
