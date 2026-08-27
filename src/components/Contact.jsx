@@ -26,13 +26,25 @@ function Contact() {
         },
       );
 
+      // Success message show
       setSuccess(true);
 
+      // Clear form
       form.current.reset();
+
+      // Success message hide after 3 seconds
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
     } catch (err) {
       console.error("EmailJS Error:", err);
 
       setError(true);
+
+      // Error message hide after 3 seconds
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
     } finally {
       setSending(false);
     }
@@ -135,16 +147,18 @@ function Contact() {
               <span>↗</span>
             </button>
 
-            {/* SUCCESS */}
+            {/* SUCCESS MESSAGE */}
             {success && (
-              <p className="success-message">✓ Message sent successfully!</p>
+              <div className="success-message">
+                ✓ Message sent successfully!
+              </div>
             )}
 
-            {/* ERROR */}
+            {/* ERROR MESSAGE */}
             {error && (
-              <p className="error-message">
+              <div className="error-message">
                 ✕ Message failed. Please try again.
-              </p>
+              </div>
             )}
           </motion.form>
         </div>
